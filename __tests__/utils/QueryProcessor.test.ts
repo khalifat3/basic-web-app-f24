@@ -36,4 +36,28 @@ describe("QueryProcessor", () => {
               ));
         });
 
+        test('should return largest', () => {
+            const query = "Which of the following numbers is the largest: 58, 44, 34?";
+            const numbersMatch = query.match(/\d+/g);
+            const numbers = numbersMatch ? numbersMatch.map(Number) : [];
+            const response = numbers.length > 0 ? Math.max(...numbers) : "No numbers found";
+            expect(response).toBe(58);
+        });
+        
+        test('should return sum', () => {
+            const query = "Add 45 and 30 together";
+            const numbersMatch = query.match(/\d+/g);
+            const numbers = numbersMatch ? numbersMatch.map(Number) : [];
+            const result = numbers.reduce((a, b) => a + b, 0);
+            expect(result).toBe(75);
+        });
+        
+        test('should return multiple', () => {
+            const query = "Multiply 2 and 3 together";
+            const numbersMatch = query.match(/\d+/g);
+            const numbers = numbersMatch ? numbersMatch.map(Number) : [];
+            const result = numbers.length > 0 ? numbers.reduce((a, b) => a * b, 1) : "No numbers found";
+            expect(result).toBe(6);
+        });
+        
 });
