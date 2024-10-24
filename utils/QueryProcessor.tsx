@@ -23,6 +23,14 @@ export default function QueryProcessor(query: string): string {
       return Math.max(...numbers);
     }
 
+    if (query.toLowerCase().includes("plus")) {
+      // Extract numbers from the query string
+      const numbers = query.match(/\d+/g).map(Number);
+      // Sum the numbers using the reduce method
+      const result = numbers.reduce((a, b) => a + b, 0);
+      return result;
+    }
+
 
 
   return "";
