@@ -14,5 +14,16 @@ export default function QueryProcessor(query: string): string {
     if (query.toLowerCase().includes("name")) {
     return ( "khalifa" );
   }
+
+    // Check if the query asks for the largest number
+    if (query.toLowerCase().includes("largest")) {
+      // Extract numbers from the query string
+      const numbers = query.match(/\d+/g).map(Number);
+      // Find and return the largest number using Math.max()
+      return Math.max(...numbers);
+    }
+
+
+
   return "";
 }
